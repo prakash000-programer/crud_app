@@ -1,0 +1,3 @@
+<%= turbo_stream.append "students_table", partial: "stds/std", locals: { std: @std } %>
+
+<%= turbo_stream.update "student_form", "" %>

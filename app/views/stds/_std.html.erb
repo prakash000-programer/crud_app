@@ -1,0 +1,11 @@
+<tr id="std_<%= std.id %>">
+  <td><%= std.name %></td>
+  <td><%= std.age %></td>
+  <td><%= std.dept %></td>
+  <td><%= std.email %></td>
+  <td><%= std.phone %></td>
+  <td>
+    <%= link_to "Edit", edit_std_path(std) %>
+    <%= link_to "Delete", std, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+</td>
+</tr>

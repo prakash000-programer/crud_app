@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @std %>
+
+<div>
+  <%= link_to "Edit this std", edit_std_path(@std) %> |
+  <%= link_to "Back to stds", stds_path %>
+
+  <%= button_to "Destroy this std", @std, method: :delete %>
+</div>

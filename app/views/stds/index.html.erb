@@ -1,0 +1,105 @@
+<% content_for :title, "Student Management" %>
+
+<div style="min-height: 100vh; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px 20px;">
+  
+  <% if notice %>
+    <div style="max-width: 1200px; margin: 0 auto 20px; padding: 15px; background: #4ade80; color: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <%= notice %>
+    </div>
+  <% end %>
+
+  <h1 style="text-align: center; color: white; margin-bottom: 40px; font-size: 2.5em; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
+    Student Management System
+  </h1>
+
+  <div style="max-width: 1200px; margin: 0 auto;">
+    
+    <!-- Add Student Form -->
+    <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.2); margin-bottom: 40px;">
+      <h2 style="margin-top: 0; color: #667eea; border-bottom: 2px solid #667eea; padding-bottom: 10px;">Add New Student</h2>
+
+      <%= form_with(model: @std, remote: true, id: "student_form") do |f| %>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 20px;">
+          
+          <div>
+            <label style="display: block; margin-bottom: 5px; font-weight: 600; color: #333;">Name:</label>
+            <%= f.text_field :name, required: true, style: "width: 100%; padding: 10px; border: 2px solid #e5e7eb; border-radius: 6px; font-size: 14px; transition: border-color 0.3s;" %>
+          </div>
+
+          <div>
+            <label style="display: block; margin-bottom: 5px; font-weight: 600; color: #333;">Age:</label>
+            <%= f.number_field :age, style: "width: 100%; padding: 10px; border: 2px solid #e5e7eb; border-radius: 6px; font-size: 14px; transition: border-color 0.3s;" %>
+          </div>
+
+          <div>
+            <label style="display: block; margin-bottom: 5px; font-weight: 600; color: #333;">Department:</label>
+            <%= f.text_field :dept, style: "width: 100%; padding: 10px; border: 2px solid #e5e7eb; border-radius: 6px; font-size: 14px; transition: border-color 0.3s;" %>
+          </div>
+
+          <div>
+            <label style="display: block; margin-bottom: 5px; font-weight: 600; color: #333;">Email:</label>
+            <%= f.email_field :email, style: "width: 100%; padding: 10px; border: 2px solid #e5e7eb; border-radius: 6px; font-size: 14px; transition: border-color 0.3s;" %>
+          </div>
+
+          <div>
+            <label style="display: block; margin-bottom: 5px; font-weight: 600; color: #333;">Phone:</label>
+            <%= f.text_field :phone, style: "width: 100%; padding: 10px; border: 2px solid #e5e7eb; border-radius: 6px; font-size: 14px; transition: border-color 0.3s;" %>
+          </div>
+
+        </div>
+
+        <%= f.submit "Add Student", style: "background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 12px 30px; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);" %>
+
+      <% end %>
+    </div>
+
+    <!-- Student List -->
+    <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.2); overflow-x: auto;">
+      <h2 style="margin-top: 0; color: #667eea; border-bottom: 2px solid #667eea; padding-bottom: 10px;">Student List</h2>
+      
+      <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+        <thead>
+          <tr style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+            <th style="padding: 15px; text-align: left; font-weight: 600;">Name</th>
+            <th style="padding: 15px; text-align: left; font-weight: 600;">Age</th>
+            <th style="padding: 15px; text-align: left; font-weight: 600;">Department</th>
+            <th style="padding: 15px; text-align: left; font-weight: 600;">Email</th>
+            <th style="padding: 15px; text-align: left; font-weight: 600;">Phone</th>
+            <th style="padding: 15px; text-align: center; font-weight: 600;">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody id="students_table">
+          <%= render @stds %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<style>
+  input:focus {
+    outline: none;
+    border-color: #667eea !important;
+  }
+  
+  input[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6) !important;
+  }
+  
+  tbody tr {
+    border-bottom: 1px solid #e5e7eb;
+    transition: background-color 0.2s;
+  }
+  
+  tbody tr:hover {
+    background-color: #f9fafb;
+  }
+  
+  tbody td {
+    padding: 15px;
+  }
+</style>

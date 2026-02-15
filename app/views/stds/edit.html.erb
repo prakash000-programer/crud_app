@@ -1,0 +1,12 @@
+<% content_for :title, "Editing std" %>
+
+<h1>Editing std</h1>
+
+<%= render "form", std: @std %>
+
+<br>
+
+<div>
+  <%= link_to "Show this std", @std %> |
+  <%= link_to "Back to stds", stds_path %>
+</div>
